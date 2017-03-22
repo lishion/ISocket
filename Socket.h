@@ -1,40 +1,33 @@
 #pragma once
 #include <WinSock2.h>
-#include "SOCKET_EXCEPTION.h"
+#include "IEXCEPTION.h"
+#include "SockAddr.h"
 class Socket{
 
 public:
 	static WSAData *wsa;	
 	friend class SocketBuilder;
 	SOCKET iSocket;
-	sockaddr_in sockAddr;
-	int addrLength;
-
+	SocketAddr socketAddr;
 	boolean isBlock;
 
-	Socket():addrLength(sizeof(sockAddr)),isBlock(true){}
-	
-	Socket* setAddr(char *s, int port);
-	Socket* setAddr(sockaddr_in &addr,char *s, int port);
+	typedef SocketAddr ISocketAddr;
+
+	Socket():isBlock(true){};
+
 	Socket* setBlock(bool flag);
 	Socket* bindSocket();
 	Socket* startListen(int max);
 	Socket* startListen();
 	Socket* getConection();
 	Socket* connectTo(char *s,int port);
-	Socket* connectTo(Socket* socket);
-	sockaddr* toStanderStyle(){
-		return (sockaddr*)&sockAddr;
-	}
-	char* getAddrLocalStyle(){
-		return inet_ntoa(sockAddr.sin_addr);
-	}
-	int getPortLocalStyle(){
-		return ntohs(sockAddr.sin_port);
-	}
+	Socket* connectTo(ISocketAddr addr);
+	Socket* setAddr(char *s);
+	Socket* setAddr(char *s,int port);
 	void read(char *buf,int len,Socket *socket);
 	void write(char *buf,int len,Socket* socket);
-
+	void write(char *buf,int len);
+	void write(char *buf,int len,SOCKET socket);
 	~Socket(){
 		if(wsa!=nullptr){
 			delete wsa;
