@@ -37,3 +37,9 @@ void SocketAddr::converStoAddr(const char *s,sockaddr_in &addr){
  
 	setAddr(addr,ip.c_str() ,port);
 }
+string SocketAddr::toString(){
+	stringstream ss;
+	ss<<getAddrLocalStyle()<<":"<<getPortLocalStyle();
+	return ss.str();
+
+}

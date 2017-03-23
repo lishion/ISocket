@@ -2,7 +2,7 @@
 #include <WinSock2.h>
 #include <vector>
 #include <iostream>
-
+#include <sstream>
 using namespace std;
 class SocketAddr
 {
@@ -38,5 +38,6 @@ public:
 	void setAddr(const char *s, int port);
 	void setAddr(sockaddr_in &addr,const char *s, int port);
 	void setAddr(const char *s);
+	string toString();
 };
 
