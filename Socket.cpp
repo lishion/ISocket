@@ -108,6 +108,7 @@ Socket* Socket::setAddr(char *s){
 	socketAddr.setAddr(s);
 	return this;
 }
+
 Socket* Socket::setAddr(char *s,int port){
 	socketAddr.setAddr(s,port);
 	return this;
