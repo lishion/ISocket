@@ -130,3 +130,10 @@ void Socket::write(char *buf,int len,SOCKET socket){
 		throw IEXPECTION("write error!!","write",WSAGetLastError());
 	}
 }
+
+Socket Socket::converToSocket(SOCKET socket){
+	Socket newSocket;
+	newSocket.iSocket = socket;
+	getsockname(socket,newSocket.socketAddr.getStanderStyle(),&(newSocket.socketAddr.addrLength));
+	return newSocket;
+}

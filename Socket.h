@@ -7,6 +7,7 @@ class Socket{
 public:
 	static WSAData *wsa;	
 	friend class SocketBuilder;
+
 	SOCKET iSocket;
 	SocketAddr socketAddr;
 	bool isBlock;
@@ -14,7 +15,7 @@ public:
 	typedef SocketAddr ISocketAddr;
 
 	Socket():isBlock(true){};
-
+	static Socket converToSocket(SOCKET socket);
 	Socket* setBlock(bool flag);
 	Socket* bindSocket();
 	Socket* startListen(int max);
