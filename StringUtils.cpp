@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "StringUtils.h"
 #include "IEXCEPTION.h"
 #include <math.h>

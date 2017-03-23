@@ -9,7 +9,7 @@ public:
 	friend class SocketBuilder;
 	SOCKET iSocket;
 	SocketAddr socketAddr;
-	boolean isBlock;
+	bool isBlock;
 
 	typedef SocketAddr ISocketAddr;
 
@@ -29,10 +29,7 @@ public:
 	void write(char *buf,int len);
 	void write(char *buf,int len,SOCKET socket);
 	~Socket(){
-		if(wsa!=nullptr){
-			delete wsa;
-			wsa = nullptr;
-		}
+		 closesocket(iSocket);
 	}
 };
 

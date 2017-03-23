@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "SockAddr.h"
 #include "IEXCEPTION.h"
 #include "StringUtils.h"
