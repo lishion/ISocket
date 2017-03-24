@@ -13,6 +13,7 @@ SocketSelect::SocketSelect(void)
 	socketSetArry[4] = &socketSet;
  
 }
+
 int SocketSelect::selectSockets(unsigned char type){
 
 	return select(0,socketSetArry[type&READ],
