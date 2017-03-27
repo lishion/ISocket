@@ -28,7 +28,7 @@ SocketSelect* SocketSelect::setBlockTime(long s,long ms){
 	return this;
 }
 void SocketSelect::clearSockets(){
-	//FD_CLR(&socketSet);
+	FD_ZERO(&socketSet);
 }
 bool SocketSelect::contain(SOCKET socket){
 	return ( FD_ISSET(socket,&socketSet) == 0);

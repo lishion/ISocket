@@ -6,15 +6,11 @@ SocketBuilder::SocketBuilder(void)
 {
 }
 
-void SocketBuilder::createSocket(int socketType){
-
-	socketClass = createSocketWraper();
-
-	socketClass->iSocket = socket(AF_INET,socketType,0);
-
-	if(socketClass->iSocket == SOCKET_ERROR){
-		delete socketClass;
-		socketClass = nullptr;
+ 
+void SocketBuilder::initSocket(Socket *newSocket,int type){
+	newSocket->iSocket = socket(AF_INET,type,0);
+	if(newSocket->iSocket == SOCKET_ERROR){
+ 
 		throw IEXPECTION("create socket error!!","createSocket",WSAGetLastError());
 	}
 }
@@ -31,21 +27,20 @@ SocketBuilder::SocketBuilder(int l,int h){
 
 }
 
+UDPSocket* SocketBuilder::createUDPScoket(){
+	UDPSocket *socket = new UDPSocket();
+	initSocket(socket,SOCK_DGRAM);
 
-Socket* SocketBuilder::createUDPScoket(){
-	createSocket(SOCK_DGRAM);
-	return this->socketClass;
+	return socket;
 }
 
-Socket* SocketBuilder::createTCPScoket(){
-	createSocket(SOCK_STREAM);
-	return this->socketClass;
+TCPSocket* SocketBuilder::createTCPScoket(){
+	TCPSocket *socket = new TCPSocket();
+	initSocket(socket,SOCK_STREAM);
+	return socket;
 }
 
 SocketBuilder::~SocketBuilder(void)
 {
-	if(socketClass!=nullptr){
-		delete socketClass;
-		socketClass = nullptr;
-	}
+	 
 }

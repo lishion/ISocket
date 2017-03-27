@@ -1,20 +1,18 @@
 #pragma once
-#include "Socket.h"
+#include "TCPSocket.h"
+#include "UDPSocket.h"
 #include "IEXCEPTION.h"
 class SocketBuilder
 {
 private:
-
-	Socket *socketClass;
-	Socket *createSocketWraper(){
-		return new Socket();
-	}
-	void createSocket(int socketType);
+	void initSocket(Socket *newSocket,int type);
+	 
 public:
 	
 	SocketBuilder(int l,int h);
-	Socket* createUDPScoket(); 
-	Socket* createTCPScoket(); 
+
+	UDPSocket* createUDPScoket(); 
+	TCPSocket* createTCPScoket(); 
 
 	SocketBuilder(void);
 	~SocketBuilder(void);
