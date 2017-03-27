@@ -19,7 +19,7 @@ SocketBuilder::SocketBuilder(int l,int h){
 
 	if(Socket::wsa ==  nullptr){
 		Socket::wsa = new WSAData();
-		int code =  WSAStartup(MAKEWORD(h,l),Socket::wsa);
+		int code =  WSAStartup(MAKEWORD(h,l),Socket::wsa);//≥ı ºªØWinSock
 		if(code != 0){
 			throw IEXPECTION("initial socket error!!","SocketBuilder",code);
 		}

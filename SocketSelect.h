@@ -16,7 +16,6 @@ public:
 
 	
 	SocketSelect(void);
- 
 
 	SocketSelect* setBlockTime(long s,long ms);
 

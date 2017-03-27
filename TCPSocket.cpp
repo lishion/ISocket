@@ -83,7 +83,7 @@ TCPSocket* TCPSocket::connectTo(ISocketAddr addr){
 
 int TCPSocket::read(char *buf,int len,const Socket *socket){
 
-	int code = recv(socket->iSocket,buf,len,0);
+	int code = recv(socket->getOriginalSocket(),buf,len,0);
 
 
 	if(code == SOCKET_ERROR && isBlock == true){
@@ -120,7 +120,7 @@ int TCPSocket::read(char *buf,int len,SOCKET socket){
 
 int TCPSocket::write(char *buf,int len,const Socket* socket){
 
-	int code = send(socket->iSocket,buf,strlen(buf),0);
+	int code = send(socket->getOriginalSocket(),buf,strlen(buf),0);
 
 	if(code == SOCKET_ERROR && isBlock == true){
 
