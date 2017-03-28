@@ -1,6 +1,6 @@
 #include "SocketSelect.h"
 
-
+using namespace ISocket;
 SocketSelect::SocketSelect(void)
 {
 	FD_ZERO(&socketSet);
