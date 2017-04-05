@@ -1,12 +1,8 @@
 #pragma once
 #include <WinSock2.h>
+#include "def.h"
+namespace ISOCKET{
  
-namespace ISocket{
-
-	const  unsigned char READ = 0X01;
-	const  unsigned char WRITE = 0X02;
-	const  unsigned char EXCEPTION = 0X04;
-
 	class SocketSelect
 	{
 	private:

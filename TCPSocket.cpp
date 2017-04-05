@@ -1,6 +1,6 @@
-
+ 
 #include "TCPSocket.h"
-
+using namespace ISOCKET;
 
 TCPSocket::TCPSocket(void)
 {
