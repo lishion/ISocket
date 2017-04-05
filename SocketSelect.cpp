@@ -1,6 +1,6 @@
 #include "SocketSelect.h"
 
-
+using namespace ISOCKET;
 SocketSelect::SocketSelect(void)
 {
 	FD_ZERO(&socketSet);
@@ -22,17 +22,21 @@ int SocketSelect::selectSockets(unsigned char type){
 		&tv);
 
 }
+
 SocketSelect* SocketSelect::setBlockTime(long s,long ms){
 	tv.tv_sec = s;
 	tv.tv_usec = ms;
 	return this;
 }
+
 void SocketSelect::clearSockets(){
 	FD_ZERO(&socketSet);
 }
+
 bool SocketSelect::contain(SOCKET socket){
 	return ( FD_ISSET(socket,&socketSet) == 0);
 }
+
 SocketSelect::~SocketSelect(void)
 {
 }

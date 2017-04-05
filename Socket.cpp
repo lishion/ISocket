@@ -1,4 +1,5 @@
 #include "Socket.h"
+using namespace ISOCKET;
 WSAData* Socket::wsa = nullptr;
  
 
@@ -20,6 +21,7 @@ Socket* Socket:: bindSocket(){
 	}
 	return this;
 }
+
 Socket* Socket::setAddr(char *s){
 	socketAddr.setAddr(s);
 	return this;
@@ -29,7 +31,6 @@ Socket* Socket::setAddr(char *s,int port){
 	socketAddr.setAddr(s,port);
 	return this;
 }
-
 
 Socket* Socket::converToSocket(SOCKET socket){
 	Socket *newSocket = new Socket();

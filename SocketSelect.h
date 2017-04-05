@@ -1,32 +1,30 @@
 #pragma once
 #include <WinSock2.h>
- 
-class SocketSelect
-{
-private:
-	timeval tv;
-	fd_set* socketSetArry[5];
+#include "def.h"
+namespace ISOCKET{
 
-public:
-	fd_set socketSet;
-	
-	const static unsigned char READ = 0X01;
-	const static unsigned char WRITE = 0X02;
-	const static unsigned char EXCEPTION = 0X04;
+	class SocketSelect
+	{
+	private:
+		timeval tv;
+		fd_set* socketSetArry[5];
 
-	
-	SocketSelect(void);
+	public:
+		fd_set socketSet;
 
-	SocketSelect* setBlockTime(long s,long ms);
+		SocketSelect(void);
 
-	void addSocket(SOCKET s){
-		FD_SET(s,&socketSet);
-	}
+		SocketSelect* setBlockTime(long s,long ms);
 
- 	int selectSockets(unsigned char type);
-	void clearSockets();
-	bool contain(SOCKET socket);
+		void addSocket(SOCKET s){
+			FD_SET(s,&socketSet);
+		}
 
-	~SocketSelect(void);
-};
+		int selectSockets(unsigned char type);
+		void clearSockets();
+		bool contain(SOCKET socket);
+
+		~SocketSelect(void);
+	};
+}
 
