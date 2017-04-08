@@ -28,7 +28,12 @@ void SocketAddr::setAddr(const char *s){
 }
 
 void SocketAddr::converStoAddr(const char *s,sockaddr_in &addr){
-	auto vecs = StringUtils::split(s,':');
+
+	const char spaceAsciiCode = 32;
+	string ss(s);
+	StringUtils::removeWord(spaceAsciiCode,ss);//ÏÈÈ¥³ý¿Õ¸ñ
+	auto vecs = StringUtils::split(ss.c_str(),':');
+
 	if(vecs.size()!=2){
 		throw IEXPECTION("ip address error!!","converStoAddr",0);
 	}

@@ -50,6 +50,12 @@ int StringUtils::convertToInt(const string s){
 	return x;
 }
 
+void StringUtils::removeWord(char c,string &s){
+	int n=0;
+	 while( (n = s.find(c) )!=string::npos ){
+        s.erase( s.begin() + n );
+    }
+}
 
 StringUtils::~StringUtils(void)
 {
