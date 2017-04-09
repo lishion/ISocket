@@ -7,6 +7,7 @@ void SocketAddr::setAddr(const char *s, int port){
 }
 
 void SocketAddr::setAddr(sockaddr_in &addr,const char *s, int port){
+
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);
 	addr.sin_addr.s_addr = inet_addr(s);
@@ -42,6 +43,7 @@ void SocketAddr::converStoAddr(const char *s,sockaddr_in &addr){
  
 	setAddr(addr,ip.c_str() ,port);
 }
+
 string SocketAddr::toString() const
 {
 	stringstream ss;

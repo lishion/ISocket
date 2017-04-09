@@ -17,11 +17,14 @@ public:
 
 	SocketAddr(const char *s){
 		setAddr(s);
+		addrLength = sizeof(sockaddr_in);
 	}
 
 	SocketAddr(const char *s,int port){
 		setAddr(s,port);
+		addrLength = sizeof(sockaddr_in);
 	}
+
 	//将sockaddr_in转换为sockaddr类型的指针
 	sockaddr* getStanderStyle() const
 	{
