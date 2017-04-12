@@ -25,7 +25,7 @@ namespace ISOCKET{
 		Socket  clone();            //得到一个克隆Socket对象 而不是指针
 		Socket* setAddr(char *s);   //设置地址
 		Socket* setAddr(char *s,int port);//设置地址
-
+		void release();
 		SOCKET getOriginalSocket() const{
 			return iSocket;
 		}

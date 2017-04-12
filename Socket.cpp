@@ -52,3 +52,7 @@ Socket Socket::clone(){
 
 	return newSocket;
 }
+void Socket::release()
+{
+	closesocket(this->iSocket);
+}

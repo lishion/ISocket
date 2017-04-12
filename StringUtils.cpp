@@ -28,7 +28,28 @@ vector<string> StringUtils::split(const char *s,char w){
 	}
 	return vecs;
 }
+vector<string> StringUtils::split(string &str,char w){
 
+	vector<string> vecs;
+	int index = 0;
+	int lastIndex = 0;
+	while( str.find(w) != string::npos ){
+		if(str.at(index) == w){
+			if(index !=0 ){
+				vecs.push_back(str.substr(0,index));
+			}
+			str.erase(0,index+1);
+			index = 0;
+		}else{
+			index++;
+		}
+
+	}
+	if(str.size()>0){
+		vecs.push_back(str);
+	}
+	return vecs;
+}
 int StringUtils::convertToInt(const string s){
 	auto pow10 = [](int x)->int{
 		int y = 1;

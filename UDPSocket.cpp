@@ -34,6 +34,15 @@ int UDPSocket::readFrom(char *buf,int len, Socket *socket){
 	return code;
 }
 
+int UDPSocket::readFrom(char *buf,int len,  Socket::ISocketAddr &addr){
+
+	int code = recvfrom(iSocket,buf,len,0,(addr.getStanderStyle()),&(addr.addrLength));
+	if(code == SOCKET_ERROR && isBlock == true){
+
+		throw IEXPECTION("read error!!","readFrom",WSAGetLastError());
+	}
+	return code;
+}
 UDPSocket::~UDPSocket(void)
 {
 

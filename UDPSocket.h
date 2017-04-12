@@ -8,7 +8,7 @@ namespace ISOCKET{
 		int writeTo(const char *buf,int len, const Socket *socket);
 		int writeTo(const char *buf,int len, const Socket::ISocketAddr &addr);
 		int readFrom(char *buf,int len, Socket *socket);
-
+		int readFrom(char *buf,int len,  Socket::ISocketAddr &addr);
 		~UDPSocket(void);
 	};
 }
